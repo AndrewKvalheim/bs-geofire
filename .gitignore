@@ -3,5 +3,5 @@
 /.merlin
 /lib/
 
-# NPM
+# Yarn
 /node_modules/
