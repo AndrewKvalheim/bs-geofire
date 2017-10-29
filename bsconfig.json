@@ -1,8 +1,8 @@
 {
   "name": "geofire",
   "version": "0.1.0",
-  "namespace": true,
   "refmt": 3,
   "bsc-flags": ["-bs-super-errors"],
+  "bs-dependencies": ["bs-firebase"],
   "sources": ["src"]
 }

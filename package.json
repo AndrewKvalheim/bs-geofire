@@ -8,7 +8,15 @@
   },
   "keywords": ["BuckleScript"],
   "license": "MIT",
+  "peerDependencies": {
+    "bs-firebase": "^0.1.0"
+  },
   "devDependencies": {
-    "bs-platform": "2.0.0"
+    "bs-firebase": "^0.1.0",
+    "bs-platform": "^2.0.0",
+    "bs-webapi": "https://github.com/viskahq/bs-webapi-incubator.git#8ffd9d8"
+  },
+  "dependencies": {
+    "geofire": "^4.1.2"
   }
 }
