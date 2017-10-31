@@ -4,5 +4,6 @@
   "refmt": 3,
   "bsc-flags": ["-bs-super-errors"],
   "bs-dependencies": ["bs-firebase"],
-  "sources": ["src"]
+  "bs-dev-dependencies": ["bs-jest"],
+  "sources": [{ "dir": "src" }, { "dir": "tests", "type": "dev" }]
 }

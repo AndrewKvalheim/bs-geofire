@@ -12,10 +12,15 @@
   },
   "devDependencies": {
     "bs-firebase": "^0.1.0",
+    "bs-jest": "^0.2.0",
     "bs-platform": "^2.0.0",
     "bs-webapi": "https://github.com/viskahq/bs-webapi-incubator.git#8ffd9d8"
   },
   "scripts": {
-    "start": "./node_modules/.bin/bsb -clean-world -make-world -w"
+    "start": "./node_modules/.bin/bsb -clean-world -make-world -w",
+    "test": "./node_modules/.bin/jest --watchAll"
+  },
+  "jest": {
+    "testRegex": "/tests/\\w+Spec.js$"
   }
 }
