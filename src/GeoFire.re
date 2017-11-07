@@ -25,15 +25,13 @@ module GeoQuery = {
   /* GeoQuery.updateCriteria(newQueryCriteria)
    *
    * https://github.com/firebase/geofire-js/blob/v4.1.2/docs/reference.md#geoqueryupdatecriterianewquerycriteria */
-  [@bs.send] external updateCriteria : (t, Js.t('criteria)) => unit = "";
-  let updateCriteria = (geoQuery, ~center as optionalCenter, ~radius as optionalRadius=?, ()) =>
-    switch (optionalCenter, optionalRadius) {
-    | (None, None) => ()
-    | (None, Some(radius)) => updateCriteria(geoQuery, {"radius": radius})
-    | (Some(center), None) => updateCriteria(geoQuery, {"center": center})
-    | (Some(center), Some(radius)) =>
-      updateCriteria(geoQuery, {"center": center, "radius": radius})
-    };
+  [@bs.send] external updateCriteria : (t, {. "center": location, "radius": float}) => unit = "";
+  let updateCriteria = (geoQuery, ~center, ~radius) =>
+    updateCriteria(geoQuery, {"center": center, "radius": radius});
+  [@bs.send] external updateCenter : (t, {. "center": location}) => unit = "updateCriteria";
+  let updateCenter = (geoQuery, center) => updateCenter(geoQuery, {"center": center});
+  [@bs.send] external updateRadius : (t, {. "radius": float}) => unit = "updateCriteria";
+  let updateRadius = (geoQuery, radius) => updateRadius(geoQuery, {"radius": radius});
   /* GeoQuery.on(eventType, callback)
    *
    * https://github.com/firebase/geofire-js/blob/v4.1.2/docs/reference.md#geoqueryoneventtype-callback */
