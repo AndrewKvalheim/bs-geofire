@@ -43,12 +43,26 @@ module GeoQuery = {
       [
         | `ready(unit => unit)
         | `key_entered((string, location, float) => unit)
-        | `key_exited((string, location, float) => unit)
+        | `key_exited((string, Js.nullable(location), Js.nullable(float)) => unit)
         | `key_moved((string, location, float) => unit)
       ]
     ) =>
     GeoCallbackRegistration.t =
     "";
+  let on = (geoQuery, variant) =>
+    switch variant {
+    | `ready(callback) => on(geoQuery, `ready(callback))
+    | `key_entered(callback) => on(geoQuery, `key_entered(callback))
+    | `key_exited(callback) =>
+      on(
+        geoQuery,
+        `key_exited(
+          (key, location, distance) =>
+            callback(key, location |> Js.toOption, distance |> Js.toOption)
+        )
+      )
+    | `key_moved(callback) => on(geoQuery, `key_moved(callback))
+    };
   /* GeoQuery.cancel()
    *
    * https://github.com/firebase/geofire-js/blob/v4.1.2/docs/reference.md#geoquerycancel */
@@ -69,6 +83,10 @@ module GeoQuery = {
  *
  * https://github.com/firebase/geofire-js/blob/v4.1.2/docs/reference.md#geofiregetkey */
 [@bs.send] external get : (t, string) => Js.Promise.t(Js.nullable(location)) = "";
+
+let get = (geofire, string) : Js.Promise.t(option(location)) =>
+  get(geofire, string)
+  |> Js.Promise.then_((nullable) => nullable |> Js.toOption |> Js.Promise.resolve);
 
 /* GeoFire.set(keyOrLocations[, location])
  *
