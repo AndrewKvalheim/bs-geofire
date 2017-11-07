@@ -2,7 +2,7 @@
   "name": "bs-geofire",
   "version": "0.1.0",
   "description": "BuckleScript bindings to GeoFire",
-  "keywords": ["BuckleScript"],
+  "keywords": ["BuckleScript", "Reason"],
   "license": "MIT",
   "dependencies": {
     "geofire": "^4.1.2"
