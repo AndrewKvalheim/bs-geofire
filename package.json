@@ -2,7 +2,21 @@
   "name": "bs-geofire",
   "version": "0.2.0",
   "description": "BuckleScript bindings to GeoFire",
-  "keywords": ["BuckleScript", "Reason"],
+  "homepage": "https://github.com/AndrewKvalheim/bs-geofire#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AndrewKvalheim/bs-geofire.git"
+  },
+  "bugs": "https://github.com/AndrewKvalheim/bs-geofire/issues",
+  "keywords": [
+    "reason",
+    "bucklescript",
+    "geoquery",
+    "location",
+    "firebase",
+    "realtime",
+    "geolocation"
+  ],
   "license": "MIT",
   "dependencies": {
     "geofire": "^4.1.2"
